@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import AUTH_USER_MODEL
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,11 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.member.MemberConfig',
-    'apps.cloth.ClothConfig',
-    'apps.recommend.RecommendConfig',
-    'apps.shop.ShopConfig',
-    'apps.sns.SnsConfig',
+    'apps.member.apps.MemberConfig',
+    'apps.clothes.apps.ClothesConfig',
+    'apps.recommend.apps.RecommendConfig',
+    'apps.shop.apps.ShopConfig',
+    'apps.sns.apps.SnsConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,11 +81,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": "daily_cody",
+        'OPTIONS': {
+            "service": "daily_cody_service",
+        }
     }
 }
 
+AUTH_USER_MODEL = "member.Member"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
