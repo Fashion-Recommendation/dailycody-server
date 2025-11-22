@@ -14,6 +14,7 @@ class Member(AbstractUser):
     weight = models.IntegerField(default=0)
     show_closet = models.BooleanField(default=False)
     profile_image_url = models.URLField(max_length=300)
+    sns_post_cnt = models.IntegerField(default=0)
     follower_cnt = models.IntegerField(default=0)
     following_cnt = models.IntegerField(default=0)
 
