@@ -9,7 +9,7 @@ class Category(models.TextChoices):
     HAT = 'hat'
 
 
-class Season(models.TextChoices):
+class Season(models.TextChoices): ## 계절 정보
     SPRING = 'spring'
     SUMMER = 'summer'
     FALL = 'fall'
