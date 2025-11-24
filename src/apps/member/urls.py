@@ -1,7 +1,7 @@
 from django.urls import path
-from src.apps.member.views.info_views import *
+from apps.member.views.info_views import MemberInfo
 
 urlpatterns = [
-    path("<int:id>/", member_info.as_view())
+    path("<int:id>/", MemberInfo.as_view())
 ]
 
