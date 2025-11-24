@@ -362,3 +362,6 @@ $RECYCLE.BIN/
 
 # local Postgres용
 config/local_settings.py
+
+#
+.claude/
