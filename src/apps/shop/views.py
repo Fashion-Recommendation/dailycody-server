@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 from apps.shop.models import ShopPost
 
-from apps.shop.serializer import (ShopPostItemSerializer, ShopPostDetailSerializer,
+from apps.shop.serializers import (ShopPostItemSerializer, ShopPostDetailSerializer,
                                   ShopPostUpdateSerializer, ShopPostOrderSerializer)
 
 # Create your views here.
