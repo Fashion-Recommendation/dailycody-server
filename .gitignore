@@ -360,3 +360,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# local Postgres용
+config/local_settings.py
+
+#
+.claude/
