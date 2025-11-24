@@ -8,4 +8,5 @@ urlpatterns = [
     path('recommend/', include('apps.recommend.urls')),
     path('shop/', include('apps.shop.urls')),
     path('sns/', include('apps.sns.urls')),
+    path('fashion_history/', include('apps.history.urls'))
 ]
