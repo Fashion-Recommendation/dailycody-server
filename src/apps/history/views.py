@@ -10,13 +10,13 @@ from apps.clothes.models import FashionHistory, FashionItem, FashionHistoryItem
 from .serializers import *
 
 
-class fashion_history_info(generics.ListAPIView):
+class FashionHistoryInfo(generics.ListAPIView):
     serializer_class = FashionHistoryInfoSerializer
 
     def get_queryset(self):
         member_id = self.kwargs.get("member_id")
         return FashionHistory.objects.filter(member_id=member_id)
 
-class fashion_history_done(generics.CreateAPIView):
+class FashionHistoryDone(generics.CreateAPIView):
     def get_serializer_class(self):
         return FashionHistoryDoneSerializer

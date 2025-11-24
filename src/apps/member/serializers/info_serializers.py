@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from src.apps.member.models import Member
+from apps.member.models import Member
 
 class MemberInfoSerializer(serializers.ModelSerializer):
     class Meta:
