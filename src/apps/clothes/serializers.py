@@ -31,3 +31,15 @@ class RegisterClothesSerializer(serializers.ModelSerializer):
             member=member,
             **validated_data
         )
+
+class ClothesInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FashionItem
+        fields = ["id", "member_id", "name", "content", "category", "style", "season", "size",
+                  "image_url","wear_cnt", "is_on_sale", "created_at", "updated_at"]
+
+
+class ClothesInfoUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FashionItem
+        fields = ["name", "content", "size"]

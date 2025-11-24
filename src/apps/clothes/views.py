@@ -10,6 +10,8 @@ from apps.clothes.models import FashionItem
 
 from apps.clothes.serializers import RegisterClothesSerializer
 
+from apps.clothes.serializers import ClothesInfoUpdateSerializer, ClothesInfoSerializer
+
 
 class ClosetInfo(generics.RetrieveAPIView):
     queryset = Member.objects.all()
@@ -18,3 +20,14 @@ class ClosetInfo(generics.RetrieveAPIView):
 
 class RegisterClothes(generics.CreateAPIView):
     serializer_class = RegisterClothesSerializer
+
+
+class DetailClothes(generics.RetrieveUpdateAPIView):
+    queryset = FashionItem.objects.all()
+    lookup_field = "id"
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return ClothesInfoSerializer
+        else:# 조회용
+            return ClothesInfoUpdateSerializer
