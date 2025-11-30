@@ -28,12 +28,10 @@ SECRET_KEY = 'django-insecure-b8@w2ydy1(!9%*__*iat(0fid0-u+s9^-xnnb^($6#fp*8*ls3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     'apps.member.apps.MemberConfig',
     'django.contrib.admin',
@@ -46,10 +44,12 @@ INSTALLED_APPS = [
     'apps.recommend.apps.RecommendConfig',
     'apps.shop.apps.ShopConfig',
     'apps.sns.apps.SnsConfig',
+    'apps.history.apps.HistoryConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,6 +92,14 @@ DATABASES = {
     }
 }
 
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
 AUTH_USER_MODEL = "member.Member"
 
 # Password validation
@@ -135,7 +143,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ]
+}

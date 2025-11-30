@@ -14,9 +14,14 @@ class FashionHistoryInfo(generics.ListAPIView):
     serializer_class = FashionHistoryInfoSerializer
 
     def get_queryset(self):
-        member_id = self.kwargs.get("member_id")
+        member_id = 1
         return FashionHistory.objects.filter(member_id=member_id)
 
+
 class FashionHistoryDone(generics.CreateAPIView):
-    def get_serializer_class(self):
-        return FashionHistoryDoneSerializer
+    serializer_class = FashionHistoryDoneSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["member_id"] = 1
+        return context
