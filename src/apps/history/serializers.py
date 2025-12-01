@@ -23,25 +23,24 @@ class FashionHistoryInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = FashionHistory
         fields = [
-            "id", "date", "season", "place", "created_at", "items"
+            "date", "season", "place", "created_at", "items"
 
         ]
 
 
 class FashionHistoryDoneSerializer(serializers.ModelSerializer):
 
-    member_id = serializers.IntegerField()
     item_ids = serializers.ListField(
         child=serializers.IntegerField(),
     )
 
     class Meta:
         model = FashionHistory
-        fields = ["member_id", "date", "season", "place", "item_ids"]
+        fields = ["date", "season", "place", "item_ids"]
 
     def create(self, data):
         return FashionHistoryService.create_fashion_history(
-            member_id=data['member_id'],
+            member_id=self.context.get("member_id"),
             date=data['date'],
             season=data['season'],
             place=data['place'],
